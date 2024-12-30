@@ -13,21 +13,24 @@ import App from "./App";
 import reportWebVitals from "./reportWebVitals";
 import HomeScreen from "./screens/HomeScreen";
 import ProductScreen from "./screens/ProductScreen";
+import { Provider } from "react-redux";
+import store from "./store";
 
 const root = ReactDOM.createRoot(document.getElementById("root"));
 const router = createBrowserRouter(
   createRoutesFromElements(
-    <Route path="/" element={<App/>}>
-      <Route path="/" index={true} element={<HomeScreen/>}></Route>
-      <Route path="/product/:id" element={<ProductScreen/>}></Route>
+    <Route path="/" element={<App />}>
+      <Route path="/" index={true} element={<HomeScreen />}></Route>
+      <Route path="/product/:id" element={<ProductScreen />}></Route>
     </Route>
   )
-)
+);
 
 root.render(
   <React.StrictMode>
-    {/* <App /> */}
-    <RouterProvider router={router}/>
+    <Provider store={store}>
+      <RouterProvider router={router} />
+    </Provider>
   </React.StrictMode>
 );
 
